@@ -43,4 +43,110 @@
         </dependency>
     </dependencies>
 
+    <build>
+
+        <!--配置target目录下生成jar包的名称-->
+        <finalName>${app.jar.name}</finalName>
+        <!--指定资源-->
+        <resources>
+            <!--非文本文件-->
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>${project.build.outputDirectory}</targetPath>
+                <filtering>false</filtering>
+                <includes>
+                    <include>certificate/SSL.keystore</include>
+                </includes>
+            </resource>
+            <!--文本文件-->
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>${project.build.outputDirectory}</targetPath>
+                <filtering>true</filtering>
+                <includes>
+                    <include>logback-spring.xml</include>
+                    <include>config/application.properties</include>
+                    <include>mybatis/mapper/**/*Mapper.xml</include>
+                    <include>mybatis/mybatis-config.xml</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!--maven-jar-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <includes>
+                        <!--项目jar包中仅包含.class文件，配置文件单独放置在外部class-path路径中-->
+                        <include>**/*.class</include>
+                    </includes>
+                    <!--项目jar包输出位置-->
+                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <archive>
+                        <!-- 生成的jar中，包含pom.xml和pom.properties这两个文件 -->
+                        <addMavenDescriptor>true</addMavenDescriptor>
+                        <manifest>
+                            <!--依赖唯一版本号-->
+                            <useUniqueVersions>false</useUniqueVersions>
+                            <!-- 为依赖包添加路径, 这些路径会写在MANIFEST文件的Class-Path下 -->
+                            <addClasspath>true</addClasspath>
+                            <!--依赖前缀-->
+                            <classpathPrefix>./</classpathPrefix>
+                            <!-- 启动类包路径 -->
+                            <mainClass>${app.main.class}</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <!--定义项目jar包的外部class-path路径-->
+                            <Class-Path>../resources/</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!--maven-assembly-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven-assembly-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <!-- 将组装绑定到maven生命周期的哪一阶段 -->
+                        <phase>package</phase>
+                        <goals>
+                            <!--single表示只运行一次-->
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- 压缩文件名 -->
+                    <finalName>${app.name}</finalName>
+                    <!-- 打包后的压缩包位置 -->
+                    <outputDirectory>${project.parent.basedir}/.build</outputDirectory>
+                    <descriptors>
+                        <!-- 描述文件路径 -->
+                        <descriptor>${project.parent.basedir}/deployment/release/conf/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+            <!--maven-clean-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${maven-clean-plugin.version}</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <!--清理临时构建目录-->
+                            <directory>${project.parent.basedir}/.build</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
