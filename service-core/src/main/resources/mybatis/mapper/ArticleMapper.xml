@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.mimiknight.developer.monkey.core.repository.mapper.ArticleMapper">
+<mapper namespace="cn.mimiknight.developer.panda.core.repository.mapper.ArticleMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="cn.mimiknight.developer.monkey.core.repository.model.entity.ArticleEntity">
+    <resultMap id="BaseResultMap" type="cn.mimiknight.developer.panda.core.repository.model.entity.ArticleEntity">
         <id column="id" property="id" />
         <result column="title" property="title" />
         <result column="article" property="article" />
