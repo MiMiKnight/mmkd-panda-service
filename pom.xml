@@ -24,6 +24,10 @@
         <app.name>mmkd-panda-service</app.name>
         <!--项目jar包名称-->
         <app.jar.name>${app.name}-${project.version}</app.jar.name>
+        <!--项目部署根路径-->
+        <app.deploy.path>/opt/app</app.deploy.path>
+        <!--项目日志根路径-->
+        <app.log.path>${app.deploy.path}/logs/${app.name}</app.log.path>
         <!--项目日志跟踪ID键名-->
         <app.log.trace-id-key>TRACE_ID</app.log.trace-id-key>
         <!--项目启动类包路径-->

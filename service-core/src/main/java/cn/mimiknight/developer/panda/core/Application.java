@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 2024-05-29 23:12:48
  */
 @Slf4j
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"cn.mimiknight.developer.panda"})
 public class Application {
     public static void main(String[] args) {
         // 启动项目
