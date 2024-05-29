@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.mimiknight.developer</groupId>
+        <artifactId>developer-parent</artifactId>
+        <version>1.0.0-RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <!--本工程-->
+    <artifactId>mmkd-panda-service-parent</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <name>parent</name>
+    <description>mmkd-panda-service-parent</description>
+
+    <!--版本管理-->
+    <properties>
+        <!--revision-->
+        <revision>0.0.1-SNAPSHOT</revision>
+        <!--项目名称-->
+        <app.name>mmkd-panda-service</app.name>
+        <!--项目jar包名称-->
+        <app.jar.name>${app.name}-${project.version}</app.jar.name>
+        <!--项目部署根路径-->
+        <app.deploy.path>/opt/app</app.deploy.path>
+        <!--项目日志根路径-->
+        <app.log.path>${app.deploy.path}/logs</app.log.path>
+        <!--项目日志跟踪ID键名-->
+        <app.log.trace-id-key>TRACE_ID</app.log.trace-id-key>
+        <!--项目启动类包路径-->
+        <app.main.class>cn.mimiknight.developer.panda.core.Application</app.main.class>
+        <!--构建打包时间戳格式-->
+        <maven.build.timestamp.format>yyyyMMddHHmmssSSS</maven.build.timestamp.format>
+
+        <!--maven-resources-plugin-->
+        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+    </properties>
+
+    <modules>
+        <module>foundation</module>
+        <module>service-core</module>
+        <module>deployment</module>
+    </modules>
+
+    <!--依赖管理-->
+    <dependencyManagement>
+
+    </dependencyManagement>
+
+    <!--构建管理-->
+    <build>
+        <!--插件-->
+        <plugins>
+            <!--maven-resources-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <configuration>
+                    <propertiesEncoding>UTF-8</propertiesEncoding>
+                </configuration>
+            </plugin>
+            <!--maven-compiler-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <!--注解处理器路径-->
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
