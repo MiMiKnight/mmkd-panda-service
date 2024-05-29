@@ -17,11 +17,6 @@
     <name>foundation</name>
     <description>foundation</description>
 
-    <!--版本管理-->
-    <properties>
-
-    </properties>
-
     <!--引入依赖-->
     <dependencies>
         <dependency>
