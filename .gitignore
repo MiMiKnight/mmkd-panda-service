@@ -4,14 +4,13 @@ target/
 *.class
 
 ### Maven ###
-.flattened-pom.xml
-pom.xml.versionsBackup
+
 
 ### Git ###
 *.orig
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr

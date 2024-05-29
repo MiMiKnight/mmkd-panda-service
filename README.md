@@ -1,4 +1,4 @@
-developer-parent
+mmkd-panda-service
 ========
 
-developer parent pom project
+mmkd-panda-service project
