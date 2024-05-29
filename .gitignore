@@ -2,6 +2,7 @@
 HELP.md
 target/
 *.class
+*.log
 
 ### Maven ###
 
