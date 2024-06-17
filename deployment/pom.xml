@@ -39,33 +39,6 @@
                     <failFast>true</failFast>
                 </configuration>
             </plugin>
-            <!--maven-assembly-plugin-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>${maven-assembly-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <!-- 将组装绑定到maven生命周期的哪一阶段 -->
-                        <phase>package</phase>
-                        <goals>
-                            <!--single表示只运行一次-->
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- 压缩文件名 -->
-                    <finalName>${app.name}</finalName>
-                    <!-- 打包后的压缩包位置 -->
-                    <outputDirectory>${project.parent.basedir}/.build</outputDirectory>
-                    <descriptors>
-                        <!-- 描述文件路径 -->
-                        <descriptor>./assembly.xml</descriptor>
-                    </descriptors>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 

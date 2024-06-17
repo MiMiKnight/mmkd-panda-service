@@ -15,26 +15,16 @@
     <dependencySets>
         <dependencySet>
             <outputDirectory>/lib</outputDirectory>
-            <!--是否生成项目的jar-->
-            <useProjectArtifact>false</useProjectArtifact>
+            <useProjectArtifact>true</useProjectArtifact>
             <scope>runtime</scope>
             <unpack>false</unpack>
             <fileMode>0640</fileMode>
             <directoryMode>0750</directoryMode>
+            <outputFileNameMapping>${artifact.groupId}:${artifact.artifactId}:${artifact.version}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
         </dependencySet>
     </dependencySets>
 
     <fileSets>
-        <!--手动打包项目jar至lib目录-->
-        <fileSet>
-            <directory>${project.parent.basedir}/service-core/target</directory>
-            <outputDirectory>/lib</outputDirectory>
-            <!--filtering标签 true:表示开启变量替换；false：表示关闭变量替换；非文本文件应该设置为false-->
-            <filtered>false</filtered>
-            <includes>
-                <include>${app.jar.name}.jar</include>
-            </includes>
-        </fileSet>
         <!--添加项目配置文件至外部classpath-->
         <fileSet>
             <directory>${project.parent.basedir}/service-core/src/main/resources</directory>
@@ -66,10 +56,6 @@
             <directory>${project.parent.basedir}/deployment/release/conf</directory>
             <outputDirectory>/conf</outputDirectory>
             <filtered>true</filtered>
-            <includes>
-                <include>Dockerfile</include>
-                <include>K8s-service-config.yaml</include>
-            </includes>
             <fileMode>0640</fileMode>
             <directoryMode>0750</directoryMode>
         </fileSet>
