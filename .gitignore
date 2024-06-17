@@ -3,6 +3,7 @@ HELP.md
 target/
 *.class
 *.log
+.build/
 
 ### Maven ###
 

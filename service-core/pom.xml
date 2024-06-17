@@ -25,6 +25,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
         <dependency>
@@ -65,6 +70,12 @@
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -126,33 +137,6 @@
                             <Class-Path>../resources/</Class-Path>
                         </manifestEntries>
                     </archive>
-                </configuration>
-            </plugin>
-            <!--maven-assembly-plugin-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>${maven-assembly-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <!-- 将组装绑定到maven生命周期的哪一阶段 -->
-                        <phase>package</phase>
-                        <goals>
-                            <!--single表示只运行一次-->
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- 压缩文件名 -->
-                    <finalName>${app.name}</finalName>
-                    <!-- 打包后的压缩包位置 -->
-                    <outputDirectory>${project.parent.basedir}/.build</outputDirectory>
-                    <descriptors>
-                        <!-- 描述文件路径 -->
-                        <descriptor>${project.parent.basedir}/deployment/release/conf/assembly.xml</descriptor>
-                    </descriptors>
                 </configuration>
             </plugin>
             <!--maven-clean-plugin-->
