@@ -79,8 +79,6 @@
     </dependencies>
 
     <build>
-        <!--配置target目录下生成jar包的名称-->
-        <finalName>${app.jar.name}</finalName>
         <!--指定资源-->
         <resources>
             <!--非文本文件-->
@@ -170,13 +168,15 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <!--关闭id后缀-->
+                    <appendAssemblyId>false</appendAssemblyId>
                     <!-- 压缩文件名 -->
-                    <finalName>${app.name}</finalName>
+                    <finalName>${app.build.name}-${app.build.version}</finalName>
                     <!-- 打包后的压缩包位置 -->
                     <outputDirectory>${project.parent.basedir}/.build</outputDirectory>
                     <descriptors>
                         <!-- 描述文件路径 -->
-                        <descriptor>${project.parent.basedir}/deployment/assembly.xml</descriptor>
+                        <descriptor>${project.parent.basedir}/deployment/release/conf/assembly.xml</descriptor>
                     </descriptors>
                 </configuration>
             </plugin>

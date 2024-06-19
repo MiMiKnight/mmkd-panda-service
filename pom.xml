@@ -20,20 +20,20 @@
 
     <!--版本管理-->
     <properties>
-        <!--项目名称-->
-        <app.name>mmkd-panda-service</app.name>
-        <!--项目jar包名称-->
-        <app.jar.name>${app.name}-${project.version}</app.jar.name>
+        <!--构建打包时间戳格式-->
+        <maven.build.timestamp.format>yyyyMMddHHmmssSSS</maven.build.timestamp.format>
+        <!--构建时项目名-->
+        <app.build.name>mmkdpandaservice</app.build.name>
+        <!--构建时项目版本-->
+        <app.build.version>${maven.build.timestamp}</app.build.version>
         <!--项目部署根路径-->
         <app.deploy.path>/opt/app</app.deploy.path>
         <!--项目日志根路径-->
-        <app.log.path>${app.deploy.path}/logs/${app.name}</app.log.path>
+        <app.log.path>${app.deploy.path}/logs/${app.build.name}</app.log.path>
         <!--项目日志跟踪ID键名-->
         <app.log.trace-id-key>TRACE_ID</app.log.trace-id-key>
         <!--项目启动类包路径-->
         <app.main.class>cn.mimiknight.developer.panda.core.Application</app.main.class>
-        <!--构建打包时间戳格式-->
-        <maven.build.timestamp.format>yyyyMMddHHmmssSSS</maven.build.timestamp.format>
 
         <!--maven plugins-->
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>

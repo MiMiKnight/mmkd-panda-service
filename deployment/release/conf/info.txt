@@ -1,0 +1,9 @@
+# \u9879\u76EE\u4FE1\u606F\u6587\u4EF6
+# \u6784\u5EFA\u65F6\u9879\u76EE\u540D\u79F0
+@app.build.name@
+# \u6784\u5EFA\u65F6\u9879\u76EE\u7248\u672C
+@app.build.version@
+# \u9879\u76EE\u5F52\u6863\u6587\u4EF6\u540D
+@app.build.name@-@app.build.version@.tar.gz
+# \u542F\u52A8\u7C7B\u5305\u8DEF\u5F84
+@app.main.class@

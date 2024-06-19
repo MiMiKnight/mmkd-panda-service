@@ -1,14 +1,30 @@
 # 指定基础镜像
-# TODO 脚本待完善
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8-jdk-alpine builder
 MAINTAINER MiMiKnight<victor2015yhm@gmail.com>
 # 设置工作目录
-WORKDIR /app
+WORKDIR /opt/cloud/app
+
+# 参数
+ARG APP_NAME={{APP_NAME}}
+ARG APP_VERSION={{APP_VERSION}}
+ARG APP_PKG=${APP_NAME}-${APP_VERSION}.tar.gz
+ARG USER="service"
+ARG USER_GROUP="service"
+ARG UID=1000
+ARG GID=1000
+ARG TIMEZONE="Asia/Shanghai"
+
+# 创建用户及用户组
+RUN useradd -u ${UID} ${USER}
+# 设置用户以及用户组
+USER ${USER}:${USER_GROUP}
 # 设置容器时区
-RUN echo "Asia/Shanghai" > /etc/timezone
-# 复制项目zip到容器中
-COPY target/myproject.zip /app
+RUN echo ${TIMEZONE} > /etc/timezone
+# 复制项目压缩包到容器中
+COPY --chown=${USER}:${USER_GROUP} ${APP_PKG} ./
 # 解压
+RUN tar -zxvf ${APP_PKG} -C ./
+
 # 暴露应用程序的端口
 EXPOSE 8443
 # 运行应用程序

@@ -2,14 +2,13 @@
 <assembly xmlns="http://maven.apache.org/ASSEMBLY/2.2.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.2.0 https://maven.apache.org/xsd/assembly-2.2.0.xsd">
-    <!--后缀-->
-    <id>release</id>
+    <id>assembly-01</id>
     <!--打包压缩文件格式-->
     <formats>
         <format>tar.gz</format>
     </formats>
     <!--是否生成基础目录-->
-    <includeBaseDirectory>true</includeBaseDirectory>
+    <includeBaseDirectory>false</includeBaseDirectory>
 
     <!--输出依赖到lib目录-->
     <dependencySets>
@@ -20,7 +19,6 @@
             <unpack>false</unpack>
             <fileMode>0640</fileMode>
             <directoryMode>0750</directoryMode>
-            <outputFileNameMapping>${artifact.groupId}:${artifact.artifactId}:${artifact.version}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
         </dependencySet>
     </dependencySets>
 
