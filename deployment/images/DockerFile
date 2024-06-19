@@ -5,8 +5,8 @@ MAINTAINER MiMiKnight<victor2015yhm@gmail.com>
 WORKDIR /opt/cloud/app
 
 # 参数
-ARG APP_NAME={{APP_NAME}}
-ARG APP_VERSION={{APP_VERSION}}
+ARG APP_NAME=@app.build.name@
+ARG APP_VERSION=@app.build.version@
 ARG APP_PKG=${APP_NAME}-${APP_VERSION}.tar.gz
 ARG USER="service"
 ARG USER_GROUP="service"
